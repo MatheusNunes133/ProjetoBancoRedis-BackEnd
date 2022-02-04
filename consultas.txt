@@ -1,3 +1,6 @@
+
+-------------------- Arquivo de consultas ------------------------
+
 //Consulta para cadastrar um novo usuário
 
 const obj = {
