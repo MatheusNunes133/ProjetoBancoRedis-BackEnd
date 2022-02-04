@@ -1,0 +1,122 @@
+//Consulta para cadastrar um novo usuário
+
+const obj = {
+name: 'Matheus Nunes', 
+email:'Matheus@matheus.com',
+profession: 'Estudante'
+}
+
+fetch("http://localhost:3000/createNewUser",{
+method: 'POST',
+headers: {
+    'Accept': 'application/json',
+     'Content-Type': 'application/json',
+        'Access-Control-Allow-Headers': '*'
+},
+body: JSON.stringify(obj)
+}).then((response)=>{
+    if(response.status == 200){
+        console.log('Usuário inserido com sucesso no banco!')
+    }else{
+        console.log('Falha ao inserir usuáro no banco!')
+    }
+})
+
+
+
+
+
+
+//consulta para resgatar um email
+
+fetch("http://localhost:3000/getUser").then(resp=>{
+ 	 let objJson = resp.json();
+ 	 return objJson
+}).then(respRef=>{
+	console.log(respRef)
+})
+
+
+
+
+
+
+//Consulta para atualizar um usuário
+
+const obj = {
+name: 'Matheus Nunes Miguel', 
+oldEmail:'Matheus@matheus.com',
+newEmail: 'matheus10@gmail.com',
+profession: 'Desenvolvedor'
+}
+
+fetch("http://localhost:3000/updateUser",{
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Headers': '*'
+    },
+    body: JSON.stringify(obj)
+}).then((response)=>{
+        if(response.status == 200){
+        console.log('Usuário atualizado com sucesso!')
+    }else{
+        console.log('Falha ao atualizar usuário!')
+    }
+})
+
+
+
+
+// Consulta para deletar uma conta de usuário
+
+const obj2 = {
+email: 'matheus10@gmail.com'
+}
+
+fetch("http://localhost:3000/deleteUser",{
+	method: 'POST',
+	headers: {
+    		'Accept': 'application/json',
+     		'Content-Type': 'application/json',
+		'Access-Control-Allow-Headers': '*'
+	},
+	body: JSON.stringify(obj2)
+}).then((response)=>{
+	  if(response.status == 200){
+        console.log('Usuário deletado com sucesso!')
+    }else{
+        console.log('Falha ao deletar usuário!')
+    }
+})
+
+
+
+
+
+//Adicionando ao Redis
+
+
+const obj = {
+email: 'matheus@matheus.com',
+text: 'Estou testando o redis'
+}
+
+fetch("http://localhost:3000/addToRedis",{
+	method: 'POST',
+	headers: {
+    		'Accept': 'application/json',
+     		'Content-Type': 'application/json',
+		'Access-Control-Allow-Headers': '*'
+	},
+	body: JSON.stringify(obj)
+}).then((response)=>{
+	  if(response.status == 200){
+        console.log('Adicionado ao redis com sucesso!')
+    }else{
+        console.log('Falha ao adicionar ao redis!')
+    }
+})
+
+
