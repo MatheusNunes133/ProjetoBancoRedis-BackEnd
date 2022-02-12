@@ -17,7 +17,7 @@ async function addToRedis(req, res){
     const {email, text} = req.body
     try{
         if(email != ''){
-            const time = 60
+            const time = 7200
             client.SETEX(email, time, text).then(response=>{
                 res.status(200).send(response)
                 console.log(response)
